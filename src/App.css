@@ -1,0 +1,40 @@
+input
+{width:clamp(100px,35%,250px);}
+button,.Header>div:nth-child(3)>div
+{cursor: pointer;transition: 0.3s;border: none;}
+.Home
+{display: flex;flex-direction: column;height: 100%;align-items: center;}
+.Header
+{display: flex;flex-direction: row;padding: 2.5%;height:clamp(50px,7.5vh,200px);width: 100%;}
+.Header>div:nth-child(1)
+{display: flex;width: 22.5%;justify-content: center;align-items: center;color: violet;text-align:justify;font-size: 1.5vw;}
+.Header>div:nth-child(2)
+{display: flex;width: 75%; justify-content: center;align-items: center;}
+.Header>div:nth-child(3)
+{display: flex;width: 15%;  justify-content: space-evenly;align-items: center;flex-direction: row;}
+#MainHome>div{width: 50%;display: flex;flex-direction: column;align-items: center;}
+.Hidden
+{display: flex;visibility: hidden;flex-direction: column;transition: 0.3s;position:fixed;background-color: rgb(51, 51, 51,0.97);height: 100vh;width: clamp(200px,41%,420px);left:0}
+.Hidden>div>div
+{display: flex;justify-content: center;width: 100%;}
+.Hidden>div>div>button{color: whitesmoke;border: none;width: 70%;text-align:left;border-bottom: 2px solid rgb(176, 168, 168);background-color: transparent;}
+.Footer
+{display: flex;flex-direction: row;position: fixed;justify-content: space-evenly;bottom: 0;align-items: center;height: clamp(70px,10vh,150px);width:100%;background-color: whitesmoke;}
+#Main>div:nth-child(1)
+{display: flex;height:30%;}
+#Main>div:nth-child(2)
+{display: flex;height:70%;}
+.Ind
+{ background-color: aliceblue;display: flex;flex-direction: row; width: 95%;align-items: center;}
+.Ind>div
+{ display: flex;flex-direction: column;width: 50%;}
+
+.Coin
+{transition: 0.3s;cursor: pointer;display: flex;border-radius: 10px;
+   box-shadow: 3px 4px grey;flex-direction: row;width: 80%;height:clamp(50px,10vh,100px);background-color: aliceblue;}
+.Coin>div:nth-child(1),.Coin>div:nth-child(3){width: 40%;display: flex;flex-direction: column;align-items: center;}
+.Coin>div:nth-child(2){width: 20%;display: flex;}
+.Coin>div:nth-child(1)>div,.Coin>div:nth-child(3)>div{
+    height: 50%;display: flex;
+}
+.Coin:hover{background-color: grey;transition: 0.3s;}
