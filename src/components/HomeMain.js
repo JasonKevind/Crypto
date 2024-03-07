@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import '../App.css';
-import { GoDot } from "react-icons/go";
-
 export const HomeMain=()=>{
-
     return (
-        <div style={{width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
-        <div style={{display:'flex',marginTop:50,
+        <div style={{width:'100%',display:'flex',flexDirection:'column',
+        alignItems:'center',}}>
+        <div style={{display:'flex',marginTop:50,boxShadow:"2px 3px 4px grey",
         flexDirection:'column',color:'white',background:'#333',width:'85%',padding:10,borderRadius:10}}
         id='eth' 
         >
@@ -24,9 +22,7 @@ export const HomeMain=()=>{
             </div>
         </div>
         <div>
-        <GoDot color='grey' />
-        <GoDot />
-        <GoDot />
+      
         </div>
         </div>
     )

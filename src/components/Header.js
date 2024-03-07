@@ -12,7 +12,6 @@ export const Header=(props)=>{
             </div>
             <div style={{color:'white',fontWeight:600,fontSize:25}}>{props.topic}</div>
             <div>
-                <div><FaSearch size={20} color='white'  /></div>
                 <div><GiHamburgerMenu size={20} color='white' onClick={(e)=>{
                     e.preventDefault();
                     if(document.getElementById("Hidden").style.visibility==='visible'){

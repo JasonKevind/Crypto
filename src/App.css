@@ -3,7 +3,7 @@ input
 button,.Header>div:nth-child(3)>div
 {cursor: pointer;transition: 0.3s;border: none;}
 .Home
-{display: flex;flex-direction: column;height: 100%;align-items: center;}
+{display: flex;flex-direction: column;height: fit-content;align-items: center;gap: 20px;}
 .Header
 {display: flex;flex-direction: row;padding: 2.5%;height:clamp(50px,7.5vh,200px);width: 100%;}
 .Header>div:nth-child(1)
@@ -25,10 +25,9 @@ button,.Header>div:nth-child(3)>div
 #Main>div:nth-child(2)
 {display: flex;height:70%;}
 .Ind
-{ background-color: aliceblue;display: flex;flex-direction: row; width: 95%;align-items: center;}
+{ background-color: aliceblue;display: flex;flex-direction: row; width: 95%;align-items: center;border-radius: 10px;}
 .Ind>div
 { display: flex;flex-direction: column;width: 50%;}
-
 .Coin
 {transition: 0.3s;cursor: pointer;display: flex;border-radius: 10px;
    box-shadow: 3px 4px grey;flex-direction: row;width: 80%;height:clamp(50px,10vh,100px);background-color: aliceblue;}

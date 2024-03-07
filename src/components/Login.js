@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import '../App.css';
 import { change } from '../state/counter/counter';
-import { UseSelector, useDispatch, useSelector } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist/umd/react-router-dom.development';
 export const Login=()=>{
     const nav=useNavigate();
-    const [mail,setMail]=useState();
-    const [password,setPassword]=useState();
-    const ct=useSelector((state)=>state.counter.value)
     const dispatch=useDispatch();
     const [sign,setSign]=useState(false);
     const signUp=[{text:"name"},{text:"emailid"},{text:"password"},{text:"number"}]
@@ -21,16 +18,15 @@ export const Login=()=>{
             <div style={{height:'50%',display:'flex',width:'100%',
             flexDirection:'column',color:'white',justifyContent:'space-evenly',alignItems:'center'}}>
                 <label >Email ID</label>
-                <input type='email' id="email" onChange={e=>setMail(e)}  placeholder='Enter your Email ID' />
+                <input type='email' id="email"   placeholder='Enter your Email ID' />
                 <label>Password</label>
-                <input id="password"  onChange={e=>setPassword(e)} placeholder='Enter the password'/>
+                <input id="password"   placeholder='Enter the password'/>
             </div>
             <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',
             alignItems:'center',width:'100%',height:'50%'}}>
                 <div>
                     <button style={{width:82.5,height:27.5,backgroundColor:'rgba(34, 209, 199, 1)'}} onClick={async(e)=>{  
-                        fetch("http://localhost:8080/Login",{method:"POST",headers:{'Content-Type':"application/json"},body:JSON.stringify({emailid:document.getElementById("email").value,password:document.getElementById("password").value})}).
-                        then(ans=>ans.json()).then(res=>{
+                        fetch("http://localhost:8080/Login",{method:"POST",headers:{'Content-Type':"application/json"},body:JSON.stringify({emailid:document.getElementById("email").value,password:document.getElementById("password").value})}).then(ans=>ans.json()).then(res=>{
                             if(res.hasOwnProperty("1")){
                             dispatch(change(document.getElementById("email").value))
                             nav("/Home");}
@@ -65,8 +61,7 @@ export const Login=()=>{
             onClick={async(e)=>{
                 fetch("http://localhost:8080/SignUp",{method:'POST',body:JSON.stringify({name:document.getElementById("name").value,
                 emailid:document.getElementById("emailid").value,password:document.getElementById("password").value,
-            number:document.getElementById("number").value}),headers:{'Content-Type':'application/json'}}).
-            then(ans=>ans.json()).then(res=>{
+            number:document.getElementById("number").value}),headers:{'Content-Type':'application/json'}}).then(ans=>ans.json()).then(res=>{
                 if(res.hasOwnProperty("1")){
                     dispatch(change(document.getElementById("emailid").value))
                     nav("/Home")

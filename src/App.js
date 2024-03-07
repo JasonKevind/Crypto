@@ -3,13 +3,9 @@ import './App.css';
 import { Login } from './components/Login';
 import { Home } from './components/Home';
 import { CoinPage } from './components/CoinPage';
-import { Indicator } from './components/Indicator';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Coin } from './components/Coin';
+import { IndicatorAnalysis } from './components/IndicatorAnalysis';
 function App() {
-  const loc=useLocation();
-  const nav=useNavigate();
   useEffect(e=>{
     window.addEventListener("resize",(er)=>{
       if(window.innerWidth>600 || window.innerHeight<550){
@@ -18,12 +14,12 @@ function App() {
     },[])
   },[])
   return (
-    <div id="dd" style={{height:'100%'}}>
+    <div id="dd" style={{height:'100%',paddingBottom:25}}>
      <Routes> 
       <Route index path="/" element={<Login  />} />
       <Route path="/Home" element={<Home topic={"CryptoEval"}/>} />
-      <Route path="/Coins"  element={<CoinPage topic={"Coins Chart"} />}/>
-      
+      <Route path="/Coins" element={<CoinPage topic={"Coins Chart"} />}/>
+      <Route path="/IndicatorAnalysis" element={<IndicatorAnalysis topic={"Indicator Analysis"}/>} />
      </Routes>
     </div>
   );
