@@ -6,13 +6,7 @@ import { CoinPage } from './components/CoinPage';
 import { useEffect } from 'react';
 import { IndicatorAnalysis } from './components/IndicatorAnalysis';
 function App() {
-  useEffect(e=>{
-    window.addEventListener("resize",(er)=>{
-      if(window.innerWidth>600 || window.innerHeight<550){
-        document.getElementById("dd").style.display='none';
-      }
-    },[])
-  },[])
+
   return (
     <div id="dd" style={{height:'100%',paddingBottom:25}}>
      <Routes> 
