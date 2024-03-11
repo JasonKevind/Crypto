@@ -1,7 +1,7 @@
 import {useState } from 'react';
 import { useNavigate } from 'react-router-dom/dist/umd/react-router-dom.development';
-
 import '../App.css';
+import { Result } from './Result';
 export const Indicator=()=>{
     const nav=useNavigate();
     const data=[{'name':'RSI','sf':"Relative Strength Index",'vals':[['Period','14'],['Field','Close']]},
@@ -18,17 +18,26 @@ export const Indicator=()=>{
         "EMA":{"Period":"50","Field":"Close"}
     })
     const [select,setSelect]=useState({});
+    const [result,setResult]=useState([
+        //{name:"BTC",value:"$321.23",pros:[{pro:"RSI",provalue:14},{pro:"MSI",provalue:22}]}
+    ]);
     return (
    <>
        <div style={{display:'flex',flexDirection:'column',gap:20,width:'100%',alignItems:'center'}}>
-        {
+       <div style={{color:'white'}}><h3>{!result.length?"Select Indicators":"Your Results"}</h3>{Object.keys(result)?"Select Atleast One Indicator to Analyse. You can also alter the default parameter in settings of each Indicator. Selecting many Indicator will give you a better result."
+       :"Based on the Indicators you chosed, these are the coins are on top of the List."}
+       </div>
+       {!result.length?
+       <>
+       {
+        
             data.map(it=>(
                 <div className='Ind'>
                     <div style={{gap:10}}>
                         <div><h2 style={{margin:0}}>{it.name}</h2>({it.sf})</div>
                         <div id={it.name} style={{display:'flex',flexDirection:'row',flexWrap:'wrap'}}>
                             {it.vals.map((itt,ind)=>(
-                            <div ind={itt[0]+it.vals[ind][0]}>{itt[0]} : {hh[it.name][it.vals[ind][0]]}</div>
+                            <div style={{padding:5}} ind={itt[0]+it.vals[ind][0]}>{itt[0]}:{hh[it.name][it.vals[ind][0]]}</div>
                             ))}
                         </div>
                     </div>
@@ -67,9 +76,11 @@ export const Indicator=()=>{
                 </div>
                 
             ))
-        }
+        }</>
+        :
+        <><Result data={result} /></>}
        </div>
-       <button style={{background:'gold',width:'20%',height:'22.5px'}} onClick={async(e)=>{
+       {!result.length?<button style={{background:'gold',width:'20%',height:'22.5px',marginBottom:17.5}} onClick={async(e)=>{
         e.preventDefault();
         const postt={}
         const arr=Object.keys(select);
@@ -78,12 +89,13 @@ export const Indicator=()=>{
         }
         if(Object.keys(postt).length){
         //fetch('/pythonapi',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({select})}).then(ans=>ans.json()).then(res=>{
-        //  nav("/Other",{state:{...postt}});
+        //  setResult(prev=>res);
        // }).catch((err)=>{alert(("Please try later....");)})
         }
         else{alert("Choose atleast one indicator...");}
-       }}>Analyze</button>
-    </> 
+       }}>Analyze</button>:
+       <button style={{background:'gold',width:'20%',height:'22.5px',marginBottom:17.5}}>Refresh</button>
+       }</>
     )
 }
 /* <>

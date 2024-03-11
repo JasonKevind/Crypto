@@ -8,7 +8,7 @@ import { IndicatorAnalysis } from './components/IndicatorAnalysis';
 function App() {
 
   return (
-    <div id="dd" style={{height:'100%',paddingBottom:25}}>
+    <div id="dd" style={{height:'100%',paddingBottom:25,paddingLeft:10,paddingRight:10}}>
      <Routes> 
       <Route index path="/" element={<Login  />} />
       <Route path="/Home" element={<Home topic={"CryptoEval"}/>} />
