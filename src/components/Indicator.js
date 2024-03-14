@@ -32,7 +32,7 @@ export const Indicator=()=>{
        {
         
             data.map(it=>(
-                <div className='Ind'>
+                <div className='Ind' style={{background:'whitesmoke'}}>
                     <div style={{gap:10}}>
                         <div><h2 style={{margin:0}}>{it.name}</h2>({it.sf})</div>
                         <div id={it.name} style={{display:'flex',flexDirection:'row',flexWrap:'wrap'}}>
@@ -42,7 +42,7 @@ export const Indicator=()=>{
                         </div>
                     </div>
                     <div style={{gap:10}}>
-                        <div><button style={{background:'grey'}} onClick={(e)=>{
+                        <div><button style={{background:'#333',color:'whitesmoke',paddingInline:17.5,paddingBlock:3}} onClick={(e)=>{
                             e.preventDefault();
                             setSelect((prev)=>{
                                 let pp={...prev};
@@ -87,7 +87,9 @@ export const Indicator=()=>{
         for(var i=0;i<arr.length;i++){
             postt[arr[i]]={...hh[arr[i]]}
         }
+       
         if(Object.keys(postt).length){
+            fetch('http://localhost:5000/pythonapi',{method:'post',headers:{'Content-Type':'application/json'},body:JSON.stringify({postt})}).then(res=>res.json()).then(ans=>{setResult(prev=>ans)}).catch(error=>console.log(error))
         //fetch('/pythonapi',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({select})}).then(ans=>ans.json()).then(res=>{
         //  setResult(prev=>res);
        // }).catch((err)=>{alert(("Please try later....");)})
