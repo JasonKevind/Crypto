@@ -3,7 +3,6 @@ import { Coin } from './Coin';
 import { Header } from './Header';
 import { Hidden } from './Hidden';
 import { Footer } from './Footer';
-import { Indicator } from './Indicator';
 export const CoinPage=(props)=>{
     const data=[{coin:"BTCUSD",inc:"2.19",val:"37,915.79"},
     {coin:"BNBUSD",inc:"2.19",val:"37,915.79"},

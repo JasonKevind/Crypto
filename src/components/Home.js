@@ -4,12 +4,10 @@ import { Header } from './Header';
 import { Hidden } from './Hidden';
 import { Main } from './Main';
 import { HomeMain } from './HomeMain';
-import { useLocation } from 'react-router-dom/dist/umd/react-router-dom.development';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import {  Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 export const Home=(props)=>{
-    const loc=useLocation();
-    const nav=useNavigate();
+   
     const ct=useSelector((state)=>state.counter.value)
 
     const data=[{id:'ind',head:"Indicator Analysis",body:"Get the Best list of Cryptocurrencies that are analyzed and processed with best Indicators"},

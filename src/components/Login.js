@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../App.css';
-import { change } from '../state/counter/counter';
+import { change, changeNam } from '../state/counter/counter';
 import {  useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist/umd/react-router-dom.development';
 export const Login=()=>{
@@ -8,9 +8,8 @@ export const Login=()=>{
     const dispatch=useDispatch();
     const [sign,setSign]=useState(false);
     const signUp=[{text:"name"},{text:"emailid"},{text:"password"},{text:"number"}]
-    
     return (
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100vh'}}>
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100vh',width:"100%"}}>
            <div style={{textAlign:'center',fontSize:25,fontWeight:500,color:'white    '}}>CryptoEval</div>
            {!sign?<div
             style={{display:'flex',height:'clamp(150px,30vh,320px)',
@@ -26,9 +25,11 @@ export const Login=()=>{
             alignItems:'center',width:'100%',height:'50%'}}>
                 <div>
                     <button style={{width:82.5,height:27.5,backgroundColor:'rgba(34, 209, 199, 1)'}} onClick={async(e)=>{  
-                        fetch("http://localhost:8080/Login",{method:"POST",headers:{'Content-Type':"application/json"},body:JSON.stringify({emailid:document.getElementById("email").value,password:document.getElementById("password").value})}).then(ans=>ans.json()).then(res=>{
+                        fetch("http://13.127.1.112:8080/Login",{method:"POST",headers:{'Content-Type':"application/json"},body:JSON.stringify({emailid:document.getElementById("email").value,password:document.getElementById("password").value})}).then(ans=>ans.json()).then(res=>{
                             if(res.hasOwnProperty("1")){
-                            dispatch(change(document.getElementById("email").value))
+                            console.log(res);
+                            dispatch(change(res['1']));
+                            dispatch(changeNam(res['2']));
                             nav("/Home");}
                             else{
                                 alert("Wrong password or emailid");
@@ -59,12 +60,13 @@ export const Login=()=>{
             ))}
             <button style={{width:82.5,height:27.5,backgroundColor:'rgba(255, 200, 3, 1)'}}
             onClick={async(e)=>{
-                fetch("http://localhost:8080/SignUp",{method:'POST',body:JSON.stringify({name:document.getElementById("name").value,
+                fetch("http://13.127.1.112:8080/SignUp",{method:'POST',body:JSON.stringify({name:document.getElementById("name").value,
                 emailid:document.getElementById("emailid").value,password:document.getElementById("password").value,
             number:document.getElementById("number").value}),headers:{'Content-Type':'application/json'}}).then(ans=>ans.json()).then(res=>{
                 if(res.hasOwnProperty("1")){
-                    dispatch(change(document.getElementById("emailid").value))
-                    nav("/Home")
+                    dispatch(change(res['1']));
+                    dispatch(changeNam(res['2']));
+                    nav("/Home");
                 }
                 else{
                     alert("Email already exists. Please try with another mailid.")

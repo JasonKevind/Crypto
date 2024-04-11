@@ -1,17 +1,18 @@
+#dd{display: none;}
+@media (max-width:500px) {
+#dd{display: flex;}
 input
 {width:clamp(100px,35%,250px);}
 button,.Header>div:nth-child(3)>div
 {cursor: pointer;transition: 0.3s;border: none;}
 .Home
-{display: flex;flex-direction: column;height: fit-content;align-items: center;gap: 20px;}
+{display: flex;flex-direction: column;height: fit-content;align-items: center;gap: 20px;width: 100%;}
 .Header
 {display: flex;flex-direction: row;padding: 2.5%;height:clamp(50px,7.5vh,200px);width: 100%;}
 .Header>div:nth-child(1)
-{display: flex;width: 22.5%;justify-content: center;align-items: center;color: violet;text-align:justify;font-size: 1.5vw;}
+{display: flex;width: 75%;align-items: center;}
 .Header>div:nth-child(2)
-{display: flex;width: 75%; justify-content: center;align-items: center;}
-.Header>div:nth-child(3)
-{display: flex;width: 15%;  justify-content: space-evenly;align-items: center;flex-direction: row;}
+{display: flex;width: 25%;  justify-content: flex-end;align-items: center;flex-direction: row;}
 #MainHome>div{width: 50%;display: flex;flex-direction: column;align-items: center;}
 .Hidden
 {display: flex;visibility: hidden;flex-direction: column;transition: 0.3s;position:fixed;background-color: rgb(51, 51, 51,0.97);height: 100vh;width: clamp(200px,41%,420px);left:0}
@@ -24,8 +25,10 @@ button,.Header>div:nth-child(3)>div
 {display: flex;height:30%;}
 #Main>div:nth-child(2)
 {display: flex;height:70%;}
+.select,.unselect
+{transition: 0.3s;background:#333;color:whitesmoke;padding-inline:17.5;padding-block:3}
 .Ind
-{ background-color:rgba(136, 134, 134, 1);display: flex;flex-direction: row; width: 95%;border-radius: 10px;box-shadow: 2px 4px 4px grey;}
+{ background-color:white;display: flex;flex-direction: row; width: 95%;border-radius: 10px;box-shadow: 2px 4px 4px grey;}
 .Ind>div
 { display: flex;flex-direction: column;width: 50%;align-items: center;text-align: center;justify-content: center;}
 
@@ -38,3 +41,4 @@ button,.Header>div:nth-child(3)>div
     height: 50%;display: flex;
 }
 .Coin:hover{background-color: grey;transition: 0.3s;}
+}

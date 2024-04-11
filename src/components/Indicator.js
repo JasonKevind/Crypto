@@ -1,9 +1,7 @@
 import {useState } from 'react';
-import { useNavigate } from 'react-router-dom/dist/umd/react-router-dom.development';
 import '../App.css';
 import { Result } from './Result';
 export const Indicator=()=>{
-    const nav=useNavigate();
     const data=[{'name':'RSI','sf':"Relative Strength Index",'vals':[['Period','14'],['Field','Close']]},
     {'name':'MFI','sf':'Money Flow Index','vals':[['Period','14']]},
     {'sf':'Moving Average Convergence Divergence','name':'MACD','vals':[['Fast MA','12'],['Slow MA','26'],['Signal','9']]},
@@ -32,7 +30,7 @@ export const Indicator=()=>{
        {
         
             data.map(it=>(
-                <div className='Ind' style={{background:'whitesmoke'}}>
+                <div className='Ind' id={it.name+'div'} style={{background:'white'}}>
                     <div style={{gap:10}}>
                         <div><h2 style={{margin:0}}>{it.name}</h2>({it.sf})</div>
                         <div id={it.name} style={{display:'flex',flexDirection:'row',flexWrap:'wrap'}}>
@@ -42,15 +40,32 @@ export const Indicator=()=>{
                         </div>
                     </div>
                     <div style={{gap:10}}>
-                        <div><button style={{background:'#333',color:'whitesmoke',paddingInline:17.5,paddingBlock:3}} onClick={(e)=>{
+                        <div style={{width:'100%',display:'flex',justifyContent:'space-evenly'}}><button id={'select'+it.name} className='select' onClick={(e)=>{
                             e.preventDefault();
                             setSelect((prev)=>{
+                                document.getElementById(it.name+"div").style.transition="0.3s";
+                                document.getElementById(it.name+"div").style.backgroundColor="grey"
                                 let pp={...prev};
                                 pp[it.name]=1;
                                 return pp;
                             })
-                        }}>Select</button></div>
-                        <div><a style={{color:'blue',textDecoration:'underline',cursor:'pointer'}} onClick={(e)=>{e.preventDefault();
+                        }}>Select</button>
+                        <button id={'cancel'+it.name} className='unselect' onClick={(e)=>{
+                            e.preventDefault();
+                            if(select.hasOwnProperty(it.name)){
+                            setSelect((prev)=>{
+                                document.getElementById(it.name+"div").style.transition="0.3s";
+                                document.getElementById(it.name+"div").style.backgroundColor="white";
+                                let pp={...prev};
+                                delete pp[it.name];
+                                return pp;
+                            })
+                        
+                        }
+                        }}>Cancel</button>
+                        </div>
+                        
+                        <div><p style={{color:'blue',textDecoration:'underline',cursor:'pointer'}} onClick={(e)=>{e.preventDefault();
                             for(var i=0;i<it.vals.length;i++){
                             const ss=it.vals[i][0]; 
                             let ans='';
@@ -70,7 +85,7 @@ export const Indicator=()=>{
                             }
                             
                         }
-                        }}>Settings</a></div>
+                        }}>Settings</p></div>
                     </div>
                 
                 </div>
@@ -89,7 +104,7 @@ export const Indicator=()=>{
         }
        
         if(Object.keys(postt).length){
-            fetch('http://localhost:5000/pythonapi',{method:'post',headers:{'Content-Type':'application/json'},body:JSON.stringify({postt})}).then(res=>res.json()).then(ans=>{setResult(prev=>ans)}).catch(error=>console.log(error))
+            fetch('http://43.204.70.107:8000/pythonapi',{method:'post',headers:{'Content-Type':'application/json'},body:JSON.stringify({postt})}).then(res=>res.json()).then(ans=>{setResult(prev=>ans)}).catch(error=>console.log(error))
         //fetch('/pythonapi',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({select})}).then(ans=>ans.json()).then(res=>{
         //  setResult(prev=>res);
        // }).catch((err)=>{alert(("Please try later....");)})
